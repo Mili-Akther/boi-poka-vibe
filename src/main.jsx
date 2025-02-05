@@ -4,10 +4,24 @@ import './index.css'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from './Component/Root/Root';
+import ErrorPage from './Component/ErrorPage/ErrorPage';
+import Home from './Component/Home/Home';
+import Dashboard from './Component/Dashboard/Dashboard';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children:[
+      {
+        path:'/',
+        element:<Home></Home>
+      },
+      {
+        path:'dashboard',
+        element: <Dashboard></Dashboard>
+      }
+    ]
   },
 ]);
 
