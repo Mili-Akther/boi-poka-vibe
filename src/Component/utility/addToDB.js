@@ -1,25 +1,41 @@
-
 const getStoreReadList = () => {
-  // read list
-  const storeListStr = localStorage.getItem("read-List");
-  if (storeListStr) {
-    const storeList = JSON.parse(storeListStr);
-    return storeList;
-  } else {
-    return [];
-  }
+  const storeListStr = localStorage.getItem("read-list"); // Fixed key case
+  return storeListStr ? JSON.parse(storeListStr) : [];
 };
 
 const addToStoreReadList = (id) => {
   const storeList = getStoreReadList();
-  if (storeList.includes(id)) {
-    // all ready exist , do not add
+  const numericId = parseInt(id); // Ensure IDs are numbers
+
+  if (storeList.includes(numericId)) {
     console.log(id, "already in the read list");
   } else {
-    storeList.push(id);
-    const storeListStr = JSON.stringify(storeList);
-    localStorage.setItem("read-list", storeListStr);
+    storeList.push(numericId);
+    localStorage.setItem("read-list", JSON.stringify(storeList));
   }
 };
 
-export { addToStoreReadList };
+// Wish list code
+const getStoreWishList = () => {
+  const storeWishListStr = localStorage.getItem("wish-list"); // Fixed key case
+  return storeWishListStr ? JSON.parse(storeWishListStr) : [];
+};
+
+const addToStoreWishList = (id) => {
+  const storeWishList = getStoreWishList();
+  const numericId = parseInt(id); // Ensure IDs are numbers
+
+  if (storeWishList.includes(numericId)) {
+    console.log(id, "already in the wish list");
+  } else {
+    storeWishList.push(numericId);
+    localStorage.setItem("wish-list", JSON.stringify(storeWishList));
+  }
+};
+
+export {
+  addToStoreReadList,
+  addToStoreWishList,
+  getStoreReadList,
+  getStoreWishList,
+};
