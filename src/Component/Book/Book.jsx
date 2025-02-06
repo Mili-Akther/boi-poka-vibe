@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
 
+  // eslint-disable-next-line react/prop-types
   const {bookId, image, bookName, author, tags, category, rating } = book;
   return (
     <Link to={`/books/${bookId}`}>

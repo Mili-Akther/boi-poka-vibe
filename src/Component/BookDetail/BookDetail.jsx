@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoreReadList } from "../utility/addToDB";
 
 const BookDetail = () => {
     const {bookId} = useParams();
@@ -20,6 +21,9 @@ const BookDetail = () => {
       publisher,
       totalPages
     } = book;
+    const handleMarkAsRead = (id) => {
+        addToStoreReadList(id)
+    }
     return (
       <div className="hero-content flex-col lg:flex-row">
         <img src={image} className="max-w-sm rounded-lg shadow-2xl w-full " />
@@ -62,8 +66,8 @@ const BookDetail = () => {
             </p>
           </div>
 
-          <button className="btn btn-outline mr-4 btn-accent mt-8">Read</button>
-          <button className="btn  btn-accent mt-8 font-black text-white">WishList</button>
+          <button onClick={()=> handleMarkAsRead(bookId)} className="btn btn-outline mr-4 btn-accent mt-8">Mark As Read</button>
+          <button className="btn  btn-accent mt-8 font-black text-white">Add To WishList</button>
         </div>
       </div>
     );
