@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 const getStoreReadList = () => {
   const storeListStr = localStorage.getItem("read-list"); // Fixed key case
   return storeListStr ? JSON.parse(storeListStr) : [];
@@ -8,10 +10,11 @@ const addToStoreReadList = (id) => {
   const numericId = parseInt(id); // Ensure IDs are numbers
 
   if (storeList.includes(numericId)) {
-    console.log(id, "already in the read list");
+    toast( "already in the read list");
   } else {
     storeList.push(numericId);
     localStorage.setItem("read-list", JSON.stringify(storeList));
+    toast('this book added to your read list')
   }
 };
 
@@ -26,7 +29,7 @@ const addToStoreWishList = (id) => {
   const numericId = parseInt(id); // Ensure IDs are numbers
 
   if (storeWishList.includes(numericId)) {
-    console.log(id, "already in the wish list");
+    toast("already in the wish list");
   } else {
     storeWishList.push(numericId);
     localStorage.setItem("wish-list", JSON.stringify(storeWishList));
