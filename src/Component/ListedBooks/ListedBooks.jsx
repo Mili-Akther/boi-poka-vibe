@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getStoreReadList } from "../utility/addToDB";
-import Book from "../Book/Book";
+// import Book from "../Book/Book";
+import ReadList from "../ReadList/ReadList";
 
 const ListedBooks = () => {
   const [sort, setSort] = useState("");
@@ -90,7 +91,7 @@ const ListedBooks = () => {
               Your Read List : {readList.length}
             </h4>
             {readList.map((book) => (
-              <Book key={book.bookId} book={book}></Book>
+              <ReadList key={book.bookId} book={book}></ReadList>
             ))}
             <p>Books you have already read will appear here.</p>
           </div>
